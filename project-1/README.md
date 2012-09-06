@@ -1,5 +1,6 @@
-Shaun Carlson
+Project1 - Make
 ===============
 
-CS 3060 - 601
+Shaun Carlson
+
 shaun.carlson@gmail.com
