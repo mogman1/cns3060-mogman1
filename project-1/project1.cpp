@@ -10,6 +10,11 @@ using namespace std;
 
 int main(int arg_count, char* args[])
 {
-	cout << "Hello world" << endl;
+	cout << "Shaun Carlson" << endl;
+	cout << "CS3060 - 601" << endl << endl;
+
+	for (int i = 1; i < arg_count; i++)
+		cout << args[i] << endl;
+
 	return 0;
 }
