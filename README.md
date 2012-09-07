@@ -1,4 +1,5 @@
-cns3060-mogman1
+Shaun Carlson
 ===============
 
-This is the private repository for mogman1 for 3060
+CS 3060 - 601
+shaun.carlson@gmail.com
