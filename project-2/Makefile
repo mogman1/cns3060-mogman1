@@ -4,7 +4,7 @@ CXXFLAGS = -g -Wall -Wextra -Wshadow -ansi -pedantic
 all: project2
 
 run:
-	./cat1 "CNS 3060" is going to be FUN
+	./cat1
 
 clean:
 	rm -rf cat1 cat1.dSYM
