@@ -1,6 +1,8 @@
-Project1 - Make
+Project2 - cat1
 ===============
 
 Shaun Carlson
 
-Incredibly simple, yet I always surprise myself by how many stupid errors I make when coming back to Makefiles and C++ after a little hiatus.
+10576840
+
+Pretty simple.  Most of my time was spent going back over my code and attempting to simplify it so it wasn't so ugly.
