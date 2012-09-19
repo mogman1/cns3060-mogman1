@@ -14,7 +14,6 @@ int outputToStdout(FILE*, int);
 
 int main(int argc, char* argv[]) {
 	int printLineNumbers = 0;
-	if (argc == 1) outputToStdout(stdin, printLineNumbers); //when no params passed in
 	int argCounter = 1;
 	if (argc > 1) {
 		if (strcmp(argv[1], "-n") == 0) {
@@ -27,6 +26,9 @@ int main(int argc, char* argv[]) {
 			printf("usage: ./cat1 [-n] [file ...]\n");
 			return 1;
 		}
+	} else {
+		//when no params passed in
+		outputToStdout(stdin, printLineNumbers);
 	}
 
 	while (argCounter < argc) {
