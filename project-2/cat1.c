@@ -1,8 +1,16 @@
+/*
+ * cat1.c
+ *
+ *   Created on: Sep 18, 2012
+ *       Author: Shaun Carlson
+ *   Student ID: 10576840
+ *  Description: Mimics *nix program "cat"
+ */
+
 #include <stdio.h>
 #include <string.h>
 
 int outputToStdout(FILE*, int);
-
 int main(int argc, char* argv[]) {
 	int printLineNumbers = 0;
 	if (argc == 1) outputToStdout(stdin, printLineNumbers); //when no params passed in
