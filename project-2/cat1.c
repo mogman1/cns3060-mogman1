@@ -11,6 +11,7 @@
 #include <string.h>
 
 int outputToStdout(FILE*, int);
+
 int main(int argc, char* argv[]) {
 	int printLineNumbers = 0;
 	if (argc == 1) outputToStdout(stdin, printLineNumbers); //when no params passed in
@@ -23,7 +24,7 @@ int main(int argc, char* argv[]) {
 			if (argc == 2) outputToStdout(stdin, printLineNumbers); //when only -n passed in
 		} else if (strncmp(argv[1], "-", 1) == 0 && strlen(argv[1]) > 1) {
 			//checks if an invalid option was passed in
-			perror("usage: ./cat1 [-n] [file ...]");
+			printf("usage: ./cat1 [-n] [file ...]\n");
 			return 1;
 		}
 	}
@@ -35,7 +36,7 @@ int main(int argc, char* argv[]) {
 		} else {
 			file = fopen(argv[argCounter], "r");
 			if (file == NULL) {
-				perror("No such file found");
+				printf("cat1: %s: No such file found\n", argv[argCounter++]);
 				continue;
 			}
 		}
@@ -48,6 +49,10 @@ int main(int argc, char* argv[]) {
 	return 0;
 }
 
+/*
+ * Prints out the characters from the file stream (which could be stdin) to
+ * stdout, printing line numbers if so specified
+ */
 int outputToStdout(FILE* file, int printLineNumbers) {
 	char currentChar;
 	char prevChar = '\n';
@@ -59,7 +64,7 @@ int outputToStdout(FILE* file, int printLineNumbers) {
 	}
 
 	if (ferror(file)) {
-		perror("There was an error reading from file");
+		printf("There was an error reading from stream\n");
 		return 1;
 	}
 

@@ -7,7 +7,7 @@ run:
 	./cat1 "CNS 3060" is going to be FUN
 
 clean:
-	rm -rf cat1
+	rm -rf cat1 cat1.dSYM
 
 project2: cat1.c
 	$(CXX) $(CXXFLAGS) cat1.c -o cat1
