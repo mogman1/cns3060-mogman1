@@ -19,10 +19,13 @@ int displayFileStats(const char*);
 
 int main(int argc, char* argv[]) {
 	if (argc > 1) {
-		for (int i = 1; i < argc; i++) {
+		//handles instance when one or more file/directories are passed in as arguments
+		int i;
+		for (i = 1; i < argc; i++) {
 			displayFileStats(argv[i]);
 		}
 	} else {
+		//no arguments defaults to equivalent of calling "./du1 ."
 		displayFileStats(CURRENT_DIR);
 	}
 
@@ -47,7 +50,13 @@ int displayFileStats(const char* path) {
 				if (strcmp("..", dirEntry->d_name) == 0) continue; //ignore entries that take you to the parent dir
 				if (strcmp(".", dirEntry->d_name) == 0)  continue; //ignore self reference on directories
 
-				//we cannot predict the length of a directory string, so it must be dynamically allocated
+				/*
+				 * We cannot predict the length of a directory string, so it must be dynamically allocated.
+				 * Also, to be able to print the entire relative path, we need to be able to pass the notion
+				 * of previous directories on to the recursive call.  To this end, the current "path" is
+				 * pushed on to the beginning of the new path string passed down to the recursive call,
+				 * with /dirEntry->d_name tacked onto the end.
+				 */
 				int dirStringLength = strlen(path) + strlen(dirEntry->d_name) + 2; //one for separating '/' and \0 char
 				char* newPath = (char*)malloc(dirStringLength);
 				if (newPath == NULL) {
