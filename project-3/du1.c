@@ -19,7 +19,7 @@ int displayFileStats(const char*);
 
 int main(int argc, char* argv[]) {
 	if (argc > 1) {
-		//handles instance when one or more file/directories are passed in as arguments
+		//handles instance when one or more files/directories are passed in as arguments
 		int i;
 		for (i = 1; i < argc; i++) {
 			displayFileStats(argv[i]);
@@ -55,9 +55,9 @@ int displayFileStats(const char* path) {
 				 * Also, to be able to print the entire relative path, we need to be able to pass the notion
 				 * of previous directories on to the recursive call.  To this end, the current "path" is
 				 * pushed on to the beginning of the new path string passed down to the recursive call,
-				 * with /dirEntry->d_name tacked onto the end.
+				 * with "/dirEntry->d_name" tacked onto the end.
 				 */
-				int dirStringLength = strlen(path) + strlen(dirEntry->d_name) + 2; //one for separating '/' and \0 char
+				int dirStringLength = strlen(path) + strlen(dirEntry->d_name) + 2; //one for separating '/' and one for terminating \0 char
 				char* newPath = (char*)malloc(dirStringLength);
 				if (newPath == NULL) {
 					printf("Failure to allocate memory for path\n");
