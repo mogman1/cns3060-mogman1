@@ -5,35 +5,35 @@ Shaun Carlson
 
 10576840
 
-#Algorithms
-##First Come First Served
-###Algorithm Description
+##Algorithms
+###First Come First Served
+####Algorithm Description
 First come first served is just a queue implementation of seeking where the head moves
 from the current position to the next position on the queue and so on until all searches
 are completed.
-###Observations
+####Observations
 This was the drop-dead easiest to implement since all it required was iterating across
 the array and computing the difference, resulting in a O(n) running time.  Of course,
 this tended to be the least efficient in terms of minimizing the seeks required.
 
-##Shortest Seek Time
-###Algorithm Description
+###Shortest Seek Time
+####Algorithm Description
 Shortest seek time scans through the entire array to find the the next track that is the
 shortest hop from the current position, then makes that hop.  It continues to do this
 scanning until all requested tracks are visited.
-###Observations
+####Observations
 This was only slightly more complicated to implement.  To keep track of what tracks have
 already been served, I created a second array of flags.  Alternatively you could toggle
 the actual values in the array when you're done with them, but this way I could re-use
 the same input array without having to copy it.  However, this algorithm  requires that 
 you loop through the entire array each time, resulting in O(n^2) running time.
 
-##Elevator
-###Algorithm Description
+###Elevator
+####Algorithm Description
 Elevator is similar to shortest seek time, except that from its start position it continues
 in one direction until it reaches one end of the disk.  Then it reverses directions and
 continues in the opposite direction to pick up the remainder of the unvisited tracks.
-###Observations
+####Observations
 For the most part, elevator isn't that much more difficult to implement than shortest seek
 time.  It suffers from the same problems that shortest seek time does in that it's going
 to require O(n^2) running time because you keep having to go over the array to find the
@@ -41,7 +41,7 @@ shortest seek time going in a certain direction.
 
 For simplicity of implementation, I chose to sort the array prior to going through the 
 "meat" of the simulation.  A more "pure" version of the algorithm would simply be a series
-of shortest seek times searches done with the constraint that your next track has to be 
+of shortest seek time searches done with the constraint that your next track has to be 
 higher than your current track until you reach the end.  At that point your next track 
 would have to be smaller than your current track until you reached the bottom.
 
@@ -50,9 +50,9 @@ meaningful way.  The process of sorting itself performs those series of shortest
 searches as described above.
  
 
-#Conclusion
+##Conclusion
 First come first served is trivial to implement, but unless you happen to get lucky and your
-tracks roughly come in order, it's going to be extremely inefficient in terms arm movement.
+tracks roughly come in order, it's going to be extremely inefficient in terms of arm movement.
 
 At first glance, the shortest seek time and elevator algorithms appear to behave very
 similarly.  For a static array of tracks this is going to be true.  For shortest seek
