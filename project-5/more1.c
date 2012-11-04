@@ -42,7 +42,6 @@ int main(int argc, char* argv[]) {
 		fclose(fp);
 	}
 
-	printf("\n"); //ensure a new line exists for the command prompt
 	return restoreTerminalAttrs();
 }
 
@@ -74,12 +73,12 @@ int processMore(FILE* src) {
 			float percentOfFile = ((float)currentLine / (float)totalLines) * 100;
 			char prompt[200];
 			if (currentLine == LINES_PER_SCREEN) {
-				snprintf(prompt, 200, "\033[7m%s %.0f%%\033[m", fileName, percentOfFile);
+				snprintf(prompt, 200, "%s %.0f%%", fileName, percentOfFile);
 			} else {
-				snprintf(prompt, 200, "\033[7m%.0f%%\033[m", percentOfFile);
+				snprintf(prompt, 200, "%.0f%%", percentOfFile);
 			}
 
-			printf("%s", prompt);
+			printf("\033[7m%s\033[m", prompt);
 			int getInput = 1;
 			while (getInput) {
 				char cmd = getc(stdin);
