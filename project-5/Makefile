@@ -5,7 +5,7 @@ PROJECT_NAME = more1
 all: project
 
 run:
-	./$(PROJECT_NAME)
+	./$(PROJECT_NAME) test.txt
 
 clean:
 	rm -rf $(PROJECT_NAME) $(PROJECT_NAME).dSYM
