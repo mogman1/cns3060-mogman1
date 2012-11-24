@@ -31,5 +31,16 @@ be 10, but it's very unlikely with only 4 threads and 10 iterations.  Increase t
 of threads or the number of iterations and it becomes more likely.
 
 ##PART C
+With the sleep command commented out, now the final count was reliably 40 in all
+executions of the program.  However, this is a little deceiving.  What is most likely
+happening is that each thread manages to completely finish before the next thread starts
+since ten iterations will complete very quickly.  Thus, there are no instances where the
+threads interfere with each other.  However, it is technically possible for threads to
+interfered with each other.  One thread could come in and grab a copy of count, which
+we'll suppose is at 12, and then another thread comes in and grabs of count before the
+first thread does its incrementing.  If this were to happen, both threads would push the
+value 13 back into count, meaning we "lost" one incremented value and the final total would
+be 39.  However, as said, the whole loop will execute so quickly that each thread probably
+finishes before the next thread even starts.
 
 ##PART D
