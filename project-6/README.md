@@ -11,8 +11,9 @@ short, nothing particularly interesting ever happened (e.g. messed up counts).
 Having a program that did something a little more extreme would be more illustrative.
 For example, have several threads (10 or more to be sure that some switching has to
 happen) increment counter and then decrement counter by oneand have it do this 10,000
-times.  If everything works properly, the final output should be 0.  However, t with
-improper thread control the output is likely to stray from 0 quite regularly.
+times.  If everything works properly, the final output should be 0.  However, with
+improper thread control the output is likely to stray from 0 quite regularly and be
+more interesting.
 
 ##PART A
 As expected, the counter value was always 0 upon exit.  The reason is that the main
