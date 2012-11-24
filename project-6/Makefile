@@ -1,18 +1,18 @@
 CXX = g++
-CXXFLAGS = -g -Wall -Wextra -Wshadow -ansi -pedantic
+CXXFLAGS = -g -Wall -Wextra -Wshadow -ansi -pedantic -pthread
 
 all: project
 
-parta:
+parta: parta.c
 	$(CXX) $(CXXFLAGS) parta.c -o parta
 
-partb:
+partb: partb.c
 	$(CXX) $(CXXFLAGS) partb.c -o partb
 
-partc:
+partc: partc.c
 	$(CXX) $(CXXFLAGS) partc.c -o partc
 
-partd:
+partd: partd.c
 	$(CXX) $(CXXFLAGS) partd.c -o partd
 
 clean:

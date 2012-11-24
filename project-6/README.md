@@ -33,14 +33,23 @@ of threads or the number of iterations and it becomes more likely.
 ##PART C
 With the sleep command commented out, now the final count was reliably 40 in all
 executions of the program.  However, this is a little deceiving.  What is most likely
-happening is that each thread manages to completely finish before the next thread starts
+happening is that each thread manages to completely finish before the next thread starts,
 since ten iterations will complete very quickly.  Thus, there are no instances where the
-threads interfere with each other.  However, it is technically possible for threads to
-interfered with each other.  One thread could come in and grab a copy of count, which
-we'll suppose is at 12, and then another thread comes in and grabs of count before the
-first thread does its incrementing.  If this were to happen, both threads would push the
-value 13 back into count, meaning we "lost" one incremented value and the final total would
-be 39.  However, as said, the whole loop will execute so quickly that each thread probably
-finishes before the next thread even starts.
+threads interfere with each other.  However, it is technically possible for this to happen.
+One thread could come in and grab a copy of count, which we'll suppose is at 12, and then
+another thread comes in and grabs of count before the first thread does its incrementing.
+If this were to happen, both threads would push the value 13 back into count, meaning we
+"lost" one incremented value and the final total would be 39.  However, as said, the whole
+loop will execute so quickly that each thread probably finishes before the next thread
+even starts.
 
 ##PART D
+Finally, a mutex has been created for this last part.  The mutex is claimed by a thread
+just before that thread attempts to fetch count and increment it.  Once the thread has
+incremented count, it releases the mutex.  The sleep command has been moved outside of the
+mutex calls, that way the thread isn't sleeping while it has control of the mutex.  With
+this implementation, the final result of count is reliably 40 and it will always be 40 as
+there are no conditions in which one thread can modify count while another thread is in the
+middle of doing the same thing.  You could also spin up as many threads or have each thread
+run for as many iterations as you like without any fear of inter-thread conflicts.  You
+could also remove the sleep command without any risk.
