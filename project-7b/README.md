@@ -15,9 +15,9 @@ that first job finished before being able to continue themselves.
 ##Shortest Job First
 This required only a slight modification to the first come first served algorithm to check the
 job queue every time a job finished for the next shortest.  This had a noticeably shorter average
-wait and turnaround time for each job.  However, if a long job came in and then shorter jobs 
-kept coming in afterwards, it's possible that this longer job would never execute because the
-scheduler would keep grabbing these shorter jobs.
+wait and turnaround time for each job.  However, if a long job came in the middle, followed by
+shorter jobs that kept coming in afterwards, it's possible that this longer job would never
+execute because the scheduler would keep grabbing these shorter jobs.
 
 ##Shortest Remaining Time Next
 This had an even shorter average wait and turnaround time when compared to shortest job first.
