@@ -43,7 +43,7 @@ void parent_process(pid_t childPID) {
 	sigsuspend(&signalMask);
 
 	//13
-	printf("PARENT: Yeah, yeah, thank you.  Dinner's a six.\n");
+	printf("PARENT: Yeah, yeah, thank you.  Dinner's at six.\n");
 }
 
 void child_sigusr1_handler(int signal) {
